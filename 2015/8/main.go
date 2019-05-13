@@ -14,22 +14,30 @@ func primeraParte() {
 	respuesta := 0
 
 	for line := range helpers.ForEachLine("input") {
-		fmt.Println(len(line))
 		respuesta += len(line)
 
 		line = strings.Replace(line, `\\`, "_", -1)
 		line = strings.Replace(line, `\"`, "_", -1)
 		line = ascii.ReplaceAllString(line, "_")
 
-		fmt.Println(len(line) - 2)
 		respuesta -= (len(line) - 2)
 	}
 	fmt.Println("Primera parte", respuesta)
 }
 
 func segundaParte() {
-	// for line := range helpers.ForEachLine("input") {
-	// }
+	respuesta := 0
+
+	for line := range helpers.ForEachLine("input") {
+		respuesta -= len(line)
+
+		line = strings.Replace(line, `\`, "__", -1)
+		line = strings.Replace(line, `"`, "__", -1)
+
+		respuesta += len(line) + 2
+	}
+	fmt.Println("Segunda parte", respuesta)
+
 }
 
 func main() {
